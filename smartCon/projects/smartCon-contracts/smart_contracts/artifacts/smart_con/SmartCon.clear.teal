@@ -1,0 +1,7 @@
+#pragma version 10
+
+smart_contracts.smart_con.contract.SmartCon.clear_state_program:
+    // smart_contracts/smart_con/contract.py:4
+    // class SmartCon(ARC4Contract):
+    int 1
+    return

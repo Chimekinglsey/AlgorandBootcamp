@@ -1,0 +1,14 @@
+name: Pull Request validation
+
+on: [pull_request]
+
+
+jobs:
+  smartCon-contracts-ci:
+    name: Run smartCon-contracts validation
+    uses: ./.github/workflows/smartCon-contracts-ci.yaml
+
+  smartCon-frontend-ci:
+    name: Run smartCon-frontend validation
+    uses: ./.github/workflows/smartCon-frontend-ci.yaml
+

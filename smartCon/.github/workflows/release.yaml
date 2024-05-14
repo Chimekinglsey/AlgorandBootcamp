@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - '.vscode/**'
+      - '.idea/**'
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  smartCon-contracts-validate:
+    name: Run smartCon-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/smartCon-contracts-ci.yaml
+
+  smartCon-contracts-release:
+    name: Run smartCon-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/smartCon-contracts-cd.yaml
+    needs: smartCon-contracts-validate
+
+  smartCon-frontend-validate:
+    name: Run smartCon-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/smartCon-frontend-ci.yaml
+
+  smartCon-frontend-release:
+    name: Run smartCon-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/smartCon-frontend-cd.yaml
+    needs: smartCon-frontend-validate
